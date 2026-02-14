@@ -3,33 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? 💕</title>
+    <title>For You 💕</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="hearts-background"></div>
     
-    <div class="container">
-        <div class="rose left-rose">🌹</div>
-        <div class="rose right-rose">🌹</div>
-        
-        <div class="card">
-            <div class="envelope">💌</div>
-            
-            <p class="question-text">I have a question for you...</p>
-            
-            <h1 class="main-text">Will You Be My</h1>
-            <h1 class="valentine-text">Valentine?</h1>
-            
-            <p class="subtitle">— The Beauty Of God 💕—</p>
-            
+    <div class="page active" id="page1">
+        <div class="content">
+            <div class="image-container">
+                <img src="VERA-4037.JPG" alt="Beautiful">
+            </div>
+            <h1>To The Most Beautiful Soul</h1>
+            <p class="message">There's something I've been wanting to ask you...</p>
+            <p class="click-prompt">Click here to continue</p>
+            <button class="btn" onclick="nextPage()">Continue 💕</button>
+        </div>
+    </div>
+
+    <div class="page" id="page2">
+        <div class="watermark"></div>
+        <div class="content">
+            <div class="floating-hearts">
+                <span>💕</span>
+                <span>❤️</span>
+                <span>💖</span>
+                <span>💗</span>
+            </div>
+            <div class="big-heart">💕</div>
+            <h1 class="valentine-question">Will You Be My Valentine?</h1>
             <div class="buttons">
-                <button id="yesBtn" class="btn yes-btn">Yes! 💕</button>
-                <button id="noBtn" class="btn no-btn">No 💔</button>
+                <button class="btn yes-btn" onclick="handleYes()">Yes! 💕</button>
+                <button class="btn no-btn" onmouseover="handleNo()" onclick="handleNo()">No 💔</button>
             </div>
         </div>
     </div>
-    
+
+    <div class="page" id="page3">
+        <div class="celebration-bg"></div>
+        <div class="content">
+            <div class="image-container">
+                <img src="VERA-2588.JPG" alt="Us">
+            </div>
+            <h1 class="celebration">NGOZI SAID YES! 🎉</h1>
+            <div class="message-container">
+                <p class="message">My Dearest Gozi,
+                Happy Valentine’s Day, my love.
+                Loving you has been the most beautiful and life-changing journey of my heart. You are my peace, my joy, and the steady strength I never knew I needed. With you, every moment feels warmer and more meaningful, and I am constantly grateful for the love we share.
+                I admire your heart, your kindness, and the way you love so deeply. You make me feel safe, chosen, and understood. As we move closer to forever, I am thankful that I get to call you my fiancé and build a life with you.
+                My love for you is not just for today, but for every tomorrow we will share. You are my answered prayer and my greatest blessing.
+                Always yours,
+                ❤️
+                
+                </p>
+            </div>
+            <div class="message-container" style="margin-top: 30px; border: 2px solid rgba(255,255,255,0.3);">
+                <div class="image-container promise-image">
+                    <img src="IMG_2846.JPEG" alt="My Promise">
+                </div>
+                <h2 style="color: white; font-size: 1.8em; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">My Promise To You 💍</h2>
+                <p class="message">Ngozi… Gods blessings, I thank God everyday for blessing me with His blessing!!
+                    Dey with me Naaau😂❤️</p>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

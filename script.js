@@ -1,55 +1,44 @@
-const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
+let currentPage = 1;
 
-noBtn.addEventListener('mouseenter', (e) => {
-    const btnRect = noBtn.getBoundingClientRect();
-    const btnCenterX = btnRect.left + btnRect.width / 2;
-    const btnCenterY = btnRect.top + btnRect.height / 2;
-    
-    let newX, newY;
-    
-    if (btnCenterX < window.innerWidth / 2) {
-        newX = Math.random() * (window.innerWidth - 300) + 200;
-    } else {
-        newX = Math.random() * 200;
-    }
-    
-    if (btnCenterY < window.innerHeight / 2) {
-        newY = Math.random() * (window.innerHeight - 200) + 150;
-    } else {
-        newY = Math.random() * 200;
-    }
-    
-    noBtn.style.position = 'fixed';
-    noBtn.style.left = newX + 'px';
-    noBtn.style.top = newY + 'px';
-});
-
-noBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-
-yesBtn.addEventListener('click', () => {
-    window.location.href = 'celebration.html';
-});
-
-
-// Create rising hearts like incense
-function createRisingHeart() {
-    const heart = document.createElement('div');
-    heart.textContent = '💕';
-    heart.style.position = 'fixed';
-    heart.style.fontSize = Math.random() * 20 + 20 + 'px';
-    heart.style.left = Math.random() * 100 + '%';
-    heart.style.bottom = '-50px';
-    heart.style.opacity = '0';
-    heart.style.zIndex = '0';
-    heart.style.pointerEvents = 'none';
-    heart.style.animation = `riseUp ${Math.random() * 3 + 6}s ease-in forwards`;
-    
-    document.body.appendChild(heart);
-    
-    setTimeout(() => heart.remove(), 9000);
+function nextPage() {
+    document.getElementById('page1').classList.remove('active');
+    document.getElementById('page2').classList.add('active');
+    currentPage = 2;
 }
 
-setInterval(createRisingHeart, 800);
+function handleYes() {
+    document.getElementById('page2').classList.remove('active');
+    document.getElementById('page3').classList.add('active');
+    createConfetti();
+}
+
+function handleNo() {
+    const noBtn = event.target;
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = Math.random() * 80 + '%';
+    noBtn.style.top = Math.random() * 80 + '%';
+}
+
+function createConfetti() {
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.textContent = ['❤️', '💕', '💖', '💗', '🎉'][Math.floor(Math.random() * 5)];
+        confetti.style.position = 'fixed';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = '-50px';
+        confetti.style.fontSize = '30px';
+        confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => confetti.remove(), 5000);
+    }
+}
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fall {
+        to { transform: translateY(100vh) rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
